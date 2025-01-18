@@ -23,7 +23,36 @@ app.get('/' , (req, res) => {
 
 //post email with nodemailer
 app.post('/emails' , async (req, res) =>{
-    options = req.body
+    const{ to , subject, text, html } = req.body;
+    //check user info
+    if(!to || !subject || (!text && !html)) {
+        return res.status(400).send({message: "Missing required email field."});
+    }
+
+    //create transporter
+    try {
+        const transporter = nodemailer.createTransport({
+            service : 'gmail',
+            auth : {
+                user : 'hermes.software.dev@gmail.com',
+                pass : 'xumfyf-cyhvab-5pIcpa'
+            }
+        });
+        
+        const mailOptions = {
+            from : 'hermes.software.dev@gmail.com',
+            to : to,
+            subject : subject,
+            text : text,
+            html : html
+        };
+
+        const info = await transporter.sendMail(mailOptions);
+        res.status(200).send({message : 'Email sent successfully!', info});
+    } catch (error) {
+        console.error("Error sending email:", error);
+        res.status(500).send({message : "Failed to send email.", error});
+    }
 })
 
 
