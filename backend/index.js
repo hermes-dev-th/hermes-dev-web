@@ -8,7 +8,6 @@ require('dotenv').config()
 
 //port
 const port = 8000
-const pp = 5000
 
 //declare app and app.use
 const app = express()
