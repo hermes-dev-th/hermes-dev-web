@@ -41,7 +41,7 @@ app.post('/emails' , async (req, res) =>{
         
         const mailOptions = {
             from : process.env.gmail,
-            to : to,
+            to : process.env.gmail,
             subject : subject,
             text : text,
             html : html
