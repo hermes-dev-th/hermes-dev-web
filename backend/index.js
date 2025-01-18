@@ -34,13 +34,13 @@ app.post('/emails' , async (req, res) =>{
         const transporter = nodemailer.createTransport({
             service : 'gmail',
             auth : {
-                user : 'hermes.software.dev@gmail.com',
-                pass : 'xumfyf-cyhvab-5pIcpa'
+                user : process.env.gmail,
+                pass : process.env.password
             }
         });
         
         const mailOptions = {
-            from : 'hermes.software.dev@gmail.com',
+            from : process.env.gmail,
             to : to,
             subject : subject,
             text : text,
