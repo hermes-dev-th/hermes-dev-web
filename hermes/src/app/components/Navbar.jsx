@@ -1,6 +1,6 @@
 export default function Navbar() {
     return (
-        <>
+        <div>
             <nav className="flex fixed h-[4vw] w-full bg-white justify-between items-center px-[1.5vw]">
         <div>
             <img src="/material/Hermes-Dev-Logo.png" alt="Logo" className="w-[9vw]" />
@@ -16,6 +16,6 @@ export default function Navbar() {
             ))}
         </div>
     </nav>
-    </>
+    </div>
     )
 }
