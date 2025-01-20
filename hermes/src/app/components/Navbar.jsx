@@ -19,7 +19,7 @@ export default function Navbar() {
             <a
               key={title}
               href={url}
-              className="px-3 py-2 text-black font-semibold hover:bg-slate-100 hover:text-slate-900 font-Sukhumvit"
+              className="px-3 py-2 text-black font-semibold hover:bg-slate-100 hover:text-slate-900 font-sukhumvit "
             >
               {title}
             </a>
