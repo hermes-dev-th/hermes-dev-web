@@ -23,7 +23,7 @@ export default function Navbar() {
             <a
               key={title}
               href={url}
-              className="p-[0.8vw] text-[0.8vw] font-bold hover:bg-gray-100 rounded-[0.35vw] hover:text-black-900 "
+              className="p-[0.8vw] text-[0.8vw] text-black font-bold hover:bg-gray-100 rounded-[0.35vw] hover:text-black-900 "
             >
               {title}
             </a>
