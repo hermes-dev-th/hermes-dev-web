@@ -1,6 +1,7 @@
 import "./globals.css";
 import Footer from '@/app/components/footer'
 import Navbar from './components/Navbar.jsx'
+import ScrollToTopOnRefresh from './components/ScrollToTopOnRefresh'
 
 export default function RootLayout({ children }) {
   return (
@@ -11,6 +12,7 @@ export default function RootLayout({ children }) {
       </head>
       <body className="font-sukhumvit">
         <Navbar />
+        <ScrollToTopOnRefresh />
         <div className="h-[4vw]"></div>
         {children}
         <Footer />

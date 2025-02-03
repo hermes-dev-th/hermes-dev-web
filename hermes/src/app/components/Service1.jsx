@@ -1,6 +1,6 @@
 export default function Service1() {
     return (
-        <div className="flex justify-center items-center w-[70vw] h-screen">
+        <div className="flex justify-center items-center w-screen h-screen">
             <div>
                 <img src="/images/FavIcon.png" alt="Image" className="h-[18vw]" />
             </div>

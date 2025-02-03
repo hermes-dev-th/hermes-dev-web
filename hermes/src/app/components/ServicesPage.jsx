@@ -9,10 +9,10 @@ export default function ServicesPage() {
   const sections = ["service1", "service2", "service3"];
   const [activeIndex, setActiveIndex] = useState(0);
   const sectionRefs = useRef([]);
-  const [showDots, setShowDots] = useState(false);
 
 
   useEffect(() => {
+
     sectionRefs.current = sections.map((id) => document.getElementById(id));
 
     const observer = new IntersectionObserver(
@@ -39,7 +39,7 @@ export default function ServicesPage() {
       behavior: "smooth",
       block: "start",
     });
-  };
+  }
 
   return (
     <div className="h-screen w-full overflow-hidden relative">
@@ -61,33 +61,13 @@ export default function ServicesPage() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5 }}
-        className="fixed right-4 top-1/2 -translate-y-1/2 flex flex-col gap-3"
+        className="fixed right-[10vw] top-1/2 -translate-y-[7vh] flex flex-col gap-[1vw]"
       >
         {sections.map((_, index) => (
           <button
             key={index}
-            className={`w-4 h-4 rounded-full transition-all duration-300 ${
-              activeIndex === index ? "bg-black scale-125" : "bg-gray-300"
-            }`}
-            onClick={() => scrollToSection(index)}
-          ></button>
-        ))}
-      </motion.div>
-
-
-      {/* Vertical Dots Navigation with Fade Effect */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: showDots ? 1 : 0 }}
-        transition={{ duration: 0.5 }}
-        className="fixed right-4 top-1/2 -translate-y-1/2 flex flex-col gap-3"
-      >
-        {sections.map((_, index) => (
-          <button
-            key={index}
-            className={`w-4 h-4 rounded-full ${
-              activeIndex === index ? "bg-black" : "bg-gray-300"
-            } transition-all duration-300`}
+            className={`w-[1.4vw] h-[1.4vw] rounded-full transition-all duration-300 ${activeIndex === index ? "bg-black" : "bg-gray-300"
+              }`}
             onClick={() => scrollToSection(index)}
           ></button>
         ))}
