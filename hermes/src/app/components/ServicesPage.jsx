@@ -9,6 +9,7 @@ export default function ServicesPage() {
   const sections = ["service1", "service2", "service3"];
   const [activeIndex, setActiveIndex] = useState(0);
   const sectionRefs = useRef([]);
+  const [showDots, setShowDots] = useState(false);
 
 
   useEffect(() => {
@@ -21,10 +22,11 @@ export default function ServicesPage() {
           if (entry.isIntersecting) {
             const index = sections.indexOf(entry.target.id);
             setActiveIndex(index);
+            setShowDots(index > 0); // Hide dots at the first section
           }
         });
       },
-      { threshold: 0.6 } // Detect when at least 60% of the section is in view
+      { threshold: 0.7 }
     );
 
     sectionRefs.current.forEach((section) => {
@@ -59,7 +61,7 @@ export default function ServicesPage() {
       {/* Vertical Dots Navigation */}
       <motion.div
         initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
+        animate={{ opacity: showDots ? 1 : 0 }}
         transition={{ duration: 0.5 }}
         className="fixed right-[10vw] top-1/2 -translate-y-[7vh] flex flex-col gap-[1vw]"
       >

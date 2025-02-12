@@ -15,7 +15,8 @@
     "next": "15.1.5",
     "nodemailer": "^6.9.16",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "react-scroll-parallax": "^3.4.5"
   },
   "devDependencies": {
     "postcss": "^8",
