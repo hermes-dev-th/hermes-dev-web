@@ -28,7 +28,6 @@ function Page() {
         },
         body: JSON.stringify(emailData),
       });
-
       // ถ้า Response สำเร็จ
       if (response.ok) {
         const result = await response.json();
