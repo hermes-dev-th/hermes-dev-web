@@ -1,7 +1,7 @@
 import PricingCard from "./PricingCard";
 export default function Pricing() {
     return (
-        <div className="flex flex-col justify-center items-center w-full h-screen gap-[3vw]">
+        <div className="flex flex-col justify-center items-center w-full h-screen gap-[3vw] mt-[10vw] mb-[50vw]">
             <div className="flex flex-col items-center justify-center">
                 <h1 className="text-[3.5vw] font-bold mb-[-1vw]">Pricing</h1>
                 <p className="text-[0.9vw]">Choose a Plan That Fits Your Needs</p>

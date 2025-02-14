@@ -44,16 +44,16 @@ export default function ServicesPage() {
   }
 
   return (
-    <div className="h-screen w-full overflow-hidden relative">
+    <div className="w-full overflow-hidden relative">
       {/* Scrollable Container */}
-      <div className="h-screen w-full snap-y snap-mandatory overflow-y-scroll no-scrollbar">
-        <div id="service1" className="h-screen snap-start flex items-center justify-center">
+      <div className="h-[20vw] w-full snap-y snap-mandatory overflow-y-scroll no-scrollbar">
+        <div id="service1" className="h-[20vw] w-full snap-start flex items-center justify-center">
           <Service1 />
         </div>
-        <div id="service2" className="h-screen snap-start flex items-center justify-center">
+        <div id="service2" className="h-[20vw] w-full snap-start flex items-center justify-center">
           <Service2 />
         </div>
-        <div id="service3" className="h-screen snap-start flex items-center justify-center">
+        <div id="service3" className="h-[20vw] w-full snap-start flex items-center justify-center">
           <Service3 />
         </div>
       </div>
