@@ -1,74 +1,97 @@
 "use client";
-import { useState, useEffect } from "react";
-import Hero from "./components/Hero.jsx";
-import Button from "./components/Button.jsx";
-import ServicesPage from "./components/ServicesPage.jsx";
-import Pricing from "./components/Pricing.jsx";
-import Contact from "./components/Contact.jsx";
-import { Parallax, ParallaxProvider } from "react-scroll-parallax";
+import { useState, useEffect, useRef } from "react";
+import Hero from "@/app/components/Hero.jsx";
+import Button from "@/app/components/Button.jsx";
+import ServicesPage from "@/app/components/ServicesPage.jsx";
+import Pricing from "@/app/components/Pricing.jsx";
+import Contact from "@/app/components/Contact.jsx";
+import Footer from "@/app/components/Footer";
 
 export default function Home() {
-  const [isPassed, setIsPassed] = useState(false);
+  const scrollContainerRef = useRef(null); // Create ref for scrollable div
+  const [logoOpacity, setLogoOpacity] = useState(1);
 
-  useEffect(() => {
+useEffect(() => {
     const handleScroll = () => {
-      // Get the ServicesPage section position
-      const serviceSection = document.getElementById("services-section");
-      if (serviceSection) {
-        const rect = serviceSection.getBoundingClientRect();
-        setIsPassed(rect.top <= 100); // Adjust threshold as needed
+      if (!scrollContainerRef?.current) return;
+
+      const scrollTop = scrollContainerRef.current.scrollTop;
+      const scrollHeight = scrollContainerRef.current.scrollHeight;
+      const screenHeight = window.innerHeight;
+
+      // Calculate scroll progress as a percentage of the total scrollable area
+      const scrollProgress = scrollTop / (scrollHeight - screenHeight); // 0 to 1 scale
+
+      // Fade out when scrolling past 50% of the screen height
+      if (scrollProgress >= 0.1) {
+        setLogoOpacity(0); // Fade out logo
+      } else {
+        const newOpacity = 1 - scrollProgress*2; // Fade from full opacity to 0 as you scroll
+        setLogoOpacity(newOpacity);
       }
     };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    const scrollDiv = scrollContainerRef?.current;
+    if (scrollDiv) {
+      scrollDiv.addEventListener("scroll", handleScroll);
+    }
+
+    return () => {
+      if (scrollDiv) {
+        scrollDiv.removeEventListener("scroll", handleScroll);
+      }
+    };
   }, []);
 
   return (
-    <ParallaxProvider>
-      <div className="h-screen overflow-y-scroll scroll-smooth snap-y snap-proximity">
-        {/* Logo */}
-        <section className="snap-center h-full flex flex-col justify-center items-center">
-          <Parallax speed={15} startScroll={0} endScroll={500} opacity={[1, 0]} className='fixed top-[12vh]'>
-            <img src="/images/Only-Hermes-Dev-Logo.png" className="h-[7vw]" />
-          </Parallax>
+    <div
+      ref={scrollContainerRef} // Attach ref to scrolling div
+      className="h-[92vh] overflow-y-scroll scroll-smooth snap-y snap-proximity"
+    >
+     
 
-          {/* Hero Section */}
-
-          <Parallax
-            speed={15}
-            startScroll={0}
-            endScroll={500}
-            scale={[1, 0.75]}
-            opacity={[1, isPassed ? 0 : 1]}
-            className={`fixed top-[20vh] ${isPassed ? "opacity-0" : "opacity-100"
-              } transition-opacity duration-800`}
-          >
-            <Hero />
-          </Parallax>
-
-          {/* Contact Button */}
-          <Parallax speed={15} startScroll={0} endScroll={500} opacity={[1, 0]} className='fixed top-[45vh]'>
-            <Button Text="Contact Us" />
-          </Parallax>
-        </section>
-
-
-        {/* Services Section - Add ID to detect when it appears */}
-        <section className="snap-center h-screen justify-center content-center" id="services-section">
-          <Parallax>
-            <ServicesPage />
-          </Parallax>
-        </section>
-
-        {/* Pricing Section */}
-        <section className="h-full snap-center content-center">
-          <Pricing />
-        </section >
-        <section className="h-screen snap-center content-center">
-          <Contact />
-        </section >
+      <section className=" h-[92vh] flex flex-col justify-center items-center">
+      <div
+        className="w-full flex justify-center items-center"
+        style={{
+          opacity: logoOpacity,
+          transition: "opacity 0.3s ease",  // Instant fade effect
+        }}
+      >
+        <img
+          src="/images/Only-Hermes-Dev-Logo.png"
+          className="h-[7vw]"
+          alt="Logo"
+        />
       </div>
-    </ParallaxProvider>
+        
+        {/* Pass scroll reference to Hero */}
+        <Hero scrollContainerRef={scrollContainerRef} />
+
+        <div
+          className="transition-opacity"
+          style={{
+            opacity: logoOpacity,
+            transition: "opacity 0.3s ease",  // Instant fade effect
+          }}
+        >
+          <Button Text="Contact Us" />
+        </div>
+      </section>
+
+      <section className="snap-center h-fit content-center mb-[35vh]" id="services-section">
+        <ServicesPage />
+      </section>
+
+      <section className="h-full snap-center content-center pb-[8vh] mb-[12vh]">
+        <Pricing />
+      </section>
+
+      <section className="h-full snap-center content-center">
+        <Contact />
+      </section>
+
+      <Footer />
+    </div>
   );
 }

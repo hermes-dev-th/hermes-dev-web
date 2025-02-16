@@ -63,7 +63,7 @@ export default function ServicesPage() {
         initial={{ opacity: 0 }}
         animate={{ opacity: showDots ? 1 : 0 }}
         transition={{ duration: 0.5 }}
-        className="fixed right-[10vw] top-1/2 -translate-y-[7vh] flex flex-col gap-[1vw]"
+        className="fixed right-[10vw] top-[55vh] -translate-y-[7vh] flex flex-col gap-[1vw]"
       >
         {sections.map((_, index) => (
           <button

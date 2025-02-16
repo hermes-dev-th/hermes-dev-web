@@ -1,5 +1,5 @@
 import "./globals.css";
-import Footer from '@/app/components/footer'
+
 import Navbar from './components/Navbar.jsx'
 import ScrollToTopOnRefresh from './components/ScrollToTopOnRefresh'
 
@@ -9,13 +9,16 @@ export default function RootLayout({ children }) {
       <head>
         <title>Hermes-Dev</title>
         <link rel="icon" href="/images/FavIcon.png"></link>
+        
       </head>
       <body className="font-sukhumvit">
+        
         <Navbar />
         <ScrollToTopOnRefresh />
-        <div className="h-[4vw]"></div>
+
+        <div className="h-[8vh]"></div>
         {children}
-        <Footer />
+      
 
       </body>
     </html>
