@@ -47,7 +47,7 @@ export default function ServicesPage() {
     <div className="w-full overflow-hidden relative">
       {/* Scrollable Container */}
       <div className="h-[20vw] w-full snap-y snap-mandatory overflow-y-scroll no-scrollbar">
-        <div id="service1" className="h-[20vw] w-full snap-start flex items-center justify-center">
+        <div id="service1" className="h-[20vw] w-[full] snap-start flex items-center justify-center">
           <Service1 />
         </div>
         <div id="service2" className="h-[20vw] w-full snap-start flex items-center justify-center">

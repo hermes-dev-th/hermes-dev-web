@@ -4,6 +4,7 @@ import Hero from "./components/Hero.jsx";
 import Button from "./components/Button.jsx";
 import ServicesPage from "./components/ServicesPage.jsx";
 import Pricing from "./components/Pricing.jsx";
+import Contact from "./components/Contact.jsx";
 import { Parallax, ParallaxProvider } from "react-scroll-parallax";
 
 export default function Home() {
@@ -25,43 +26,49 @@ export default function Home() {
 
   return (
     <ParallaxProvider>
-      <div className="flex flex-col justify-center items-center">
-        <div className="flex flex-col items-center justify-center mt-[8vw]">
-          {/* Logo */}
-          <Parallax speed={15} startScroll={0} endScroll={500} opacity={[1, 0]} className='fixed top-[5vw]'>
+      <div className="h-screen overflow-y-scroll scroll-smooth snap-y snap-proximity">
+        {/* Logo */}
+        <section className="snap-center h-full flex flex-col justify-center items-center">
+          <Parallax speed={15} startScroll={0} endScroll={500} opacity={[1, 0]} className='fixed top-[12vh]'>
             <img src="/images/Only-Hermes-Dev-Logo.png" className="h-[7vw]" />
           </Parallax>
 
           {/* Hero Section */}
+
           <Parallax
             speed={15}
             startScroll={0}
             endScroll={500}
             scale={[1, 0.75]}
             opacity={[1, isPassed ? 0 : 1]}
-            className={`fixed top-[10vw] ${
-              isPassed ? "opacity-0" : "opacity-100"
-            } transition-opacity duration-800`}
+            className={`fixed top-[20vh] ${isPassed ? "opacity-0" : "opacity-100"
+              } transition-opacity duration-800`}
           >
             <Hero />
           </Parallax>
 
           {/* Contact Button */}
-          <Parallax speed={15} startScroll={0} endScroll={500} opacity={[1, 0]} className='fixed top-[25vw]'>
+          <Parallax speed={15} startScroll={0} endScroll={500} opacity={[1, 0]} className='fixed top-[45vh]'>
             <Button Text="Contact Us" />
           </Parallax>
-        </div>
+        </section>
+
+
+        {/* Services Section - Add ID to detect when it appears */}
+        <section className="snap-center h-screen justify-center content-center" id="services-section">
+          <Parallax>
+            <ServicesPage />
+          </Parallax>
+        </section>
+
+        {/* Pricing Section */}
+        <section className="h-full snap-center content-center">
+          <Pricing />
+        </section >
+        <section className="h-screen snap-center content-center">
+          <Contact />
+        </section >
       </div>
-
-      {/* Services Section - Add ID to detect when it appears */}
-      <Parallax className="mt-[60vw]" id="services-section" speed={-15}>
-        <ServicesPage />
-      </Parallax>
-
-      {/* Pricing Section */}
-      <Parallax speed={50}>
-        <Pricing />
-      </Parallax>
     </ParallaxProvider>
   );
 }
