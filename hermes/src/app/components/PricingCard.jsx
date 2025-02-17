@@ -2,11 +2,11 @@ import Link from "next/link";
 
 export default function PricingCard({ Title, Descript, Price, Website, Backend, Maintenance, Dashboard, Admin, Image }) {
     const ServiceList = [
-        { text: 'Website', bool: Website },
-        { text: 'Backend', bool: Backend },
-        { text: 'Maintenance', bool: Maintenance },
-        { text: 'Dashboard', bool: Dashboard },
-        { text: 'Admin', bool: Admin  }
+        { text: 'Website', bool: Website , id:1 },
+        { text: 'Backend', bool: Backend , id:2 },
+        { text: 'Maintenance', bool: Maintenance , id:3 },
+        { text: 'Dashboard', bool: Dashboard , id:4 },
+        { text: 'Admin', bool: Admin , id:5 }
     ]
     return (
         <>
@@ -20,12 +20,12 @@ export default function PricingCard({ Title, Descript, Price, Website, Backend, 
                         </div>
 
                         <div className="flex flex-col justify-start ml-[1vw] gap-[0.3vw]">
-                            <h1 className="text-[1.7vw] font-bold">THB {Price}</h1>
+                            <h1 className="text-[1.7vw] font-bold" key={0} >THB {Price}</h1>
 
                             {
                                 ServiceList.map((List) => {
                                     return (
-                                        <div className="flex gap-[0.5vw]">
+                                        <div className="flex gap-[0.5vw]" key={List.id}>
                                             <img src={List.bool ? './images/check-icon.png' : './images/cross-icon.png'} className="h-[1vw]"></img>
                                             <p className="text-[0.9vw] font-light">{List.text}</p>
                                         </div>

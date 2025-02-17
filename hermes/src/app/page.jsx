@@ -46,11 +46,11 @@ useEffect(() => {
   return (
     <div
       ref={scrollContainerRef} // Attach ref to scrolling div
-      className="h-[92vh] overflow-y-scroll scroll-smooth snap-y snap-proximity"
+      className="h-[99vh] overflow-y-scroll scroll-smooth snap-y snap-proximity"
     >
      
 
-      <section className=" h-[92vh] flex flex-col justify-center items-center">
+      <section className=" h-[92vh] flex flex-col justify-center items-center" id="hero-section">
       <div
         className="w-full flex justify-center items-center"
         style={{
@@ -79,19 +79,21 @@ useEffect(() => {
         </div>
       </section>
 
-      <section className="snap-center h-fit content-center mb-[35vh]" id="services-section">
+      <section className="snap-center h-fit content-center mb-[30vh] pt-[5vh]" id="services-section">
         <ServicesPage />
       </section>
 
-      <section className="h-full snap-center content-center pb-[8vh] mb-[12vh]">
+      <section className="h-full snap-center content-center pb-[8vh] mb-[12vh]" id="pricing-section">
         <Pricing />
       </section>
 
-      <section className="h-full snap-center content-center">
+      <section className="h-full snap-center content-center pt-[8vh]" id="contact-section">
         <Contact />
       </section>
-
+      
+      <section>
       <Footer />
+      </section>
     </div>
   );
 }

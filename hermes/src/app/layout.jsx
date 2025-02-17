@@ -16,7 +16,7 @@ export default function RootLayout({ children }) {
         <Navbar />
         <ScrollToTopOnRefresh />
 
-        <div className="h-[8vh]"></div>
+        <div className="h-[1vh]"></div>
         {children}
       
 

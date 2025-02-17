@@ -2,7 +2,6 @@ import React from 'react';
 
 const Footer = () => {
     return (
-        <>
             <div className="flex flex-row justify-between  px-[2.5vw] bg-black h-[3vw] w-full items-center text-white">
                 <div>
                 <p className='text-[0.7vw]'>Hermes-Dev</p>
@@ -14,7 +13,6 @@ const Footer = () => {
                 <a href=""><img className='w-[1.4vw]' src="/images/Group_64.png" alt="" /></a>
                 </div>                
             </div>
-        </>
     );
 }
 

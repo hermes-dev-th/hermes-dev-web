@@ -39,15 +39,15 @@ export default function Hero({ scrollContainerRef }) {
   }, [lastScrollY, scrollContainerRef]);
 
   return (
-    <div className="w-full flex flex-col justify-center items-center my-[3vw] sticky top-[12vh]">
+    <div className="w-full flex flex-col justify-center items-center my-[3vw] sticky top-[10vh]">
       <h1
-        className="font-bold my-[-1vw] transition-all duration-600"
+        className="font-bold my-[-1vw] transition-all duration-800"
         style={{ fontSize: `${titleSize}vw` }}
       >
         Empower the Business
       </h1>
       <p
-        className="font-light transition-all duration-600"
+        className="font-light transition-all duration-800"
         style={{ fontSize: `${subtitleSize}vw` }}
       >
         Transform Your Business with Innovative Web Solutions
