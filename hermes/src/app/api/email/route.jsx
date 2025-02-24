@@ -2,10 +2,10 @@ import nodemailer from 'nodemailer';
 import { NextResponse } from 'next/server';
 
 export async function POST(req) {
-  const { to, subject, text, html } = await req.json(); // use `req.json()` to parse the body
+  const { to, subject, massage } = await req.json(); // use `req.json()` to parse the body
 
   // ตรวจสอบว่า request body มีข้อมูลครบถ้วน
-  if (!to || !subject || (!text && !html)) {
+  if (!to || !subject || (!massage)) {
     return NextResponse.json(
       { message: 'Missing required email field.' },
       { status: 400 }
@@ -26,8 +26,7 @@ export async function POST(req) {
       from: process.env.EMAIL_USER,
       to: process.env.EMAIL_USER,
       subject,
-      text,
-      html,
+      massage,
     };
 
     // ส่งอีเมล

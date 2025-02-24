@@ -9,9 +9,9 @@ export default function Contact() {
     return (
         <div className="flex flex-col justify-center items-center mb-[50vw] ">
             <h1 className="text-[3.5vw] font-bold">Contact Us</h1>
-            <div className="flex justify-between items-center mt-[3vw] w-[70vw] bg-blue-200">
+            <div className="flex justify-between items-center w-[70vw]">
 
-                <div className="flex flex-col gap-[1vw] bg-black text-white rounded-[1vw] py-[4vw] pl-[3vw] pr-[5vw]">
+                <div className="flex flex-col gap-[1vw] bg-black text-white rounded-[1vw] py-[4vw] pl-[3vw] pr-[5vw] mb-[3vw]">
 
                     {ContactList.map((contact) => {
                         return (

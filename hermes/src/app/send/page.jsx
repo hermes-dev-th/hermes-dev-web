@@ -4,8 +4,7 @@ import { useState } from 'react';
 function Page() {
   const [to, setTo] = useState('');
   const [subject, setSubject] = useState('');
-  const [text, setText] = useState('');
-  const [html, setHtml] = useState('');
+  const [massage, setMassage] = useState('');
   const [responseMessage, setResponseMessage] = useState('');
 
   const handleSubmit = async (e) => {
@@ -15,8 +14,7 @@ function Page() {
     const emailData = {
       to,
       subject,
-      text,
-      html,
+      massage,
     };
 
     try {
@@ -43,12 +41,13 @@ function Page() {
   };
 
   return (
-    <div>
-      <h1 className='size-2; m-20 '>Send Email</h1>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="to">To:</label>
+    <div >
+
+      <form onSubmit={handleSubmit} className='flex flex-col items-start w-[35vw] text-[1.1vw] font-light p-[2vw] gap-[1vw]'>
+        <div className='flex flex-col w-full'>
+          <label htmlFor="to">Your name</label>
           <input
+            className='outline outline-2 rounded-[0.5vw] p-[0.1vw] px-[0.5vw] text-[1.2vw]'
             type="email"
             id="to"
             name="to"
@@ -57,9 +56,34 @@ function Page() {
             required
           />
         </div>
-        <div>
-          <label className='m-20; size-10' htmlFor="subject">Subject:</label>
+        <div className='flex flex-col w-full'>
+          <label htmlFor="to">Company name</label>
           <input
+            className='outline outline-2 rounded-[0.5vw] p-[0.1vw] px-[0.5vw] text-[1.2vw]'
+            type="email"
+            id="to"
+            name="to"
+            value={to}
+            onChange={(e) => setTo(e.target.value)}
+            required
+          />
+        </div>
+        <div className='flex flex-col w-full'>
+          <label htmlFor="to">Your Email</label>
+          <input
+            className='outline outline-2 rounded-[0.5vw] p-[0.1vw] px-[0.5vw] text-[1.2vw]'
+            type="email"
+            id="to"
+            name="to"
+            value={to}
+            onChange={(e) => setTo(e.target.value)}
+            required
+          />
+        </div>
+        <div className='flex flex-col w-full'>
+          <label htmlFor="subject">Subject:</label>
+          <input
+            className='outline outline-2 rounded-[0.5vw] p-[0.1vw] px-[0.5vw] text-[1.2vw]'
             type="text"
             id="subject"
             name="subject"
@@ -68,26 +92,20 @@ function Page() {
             required
           />
         </div>
-        <div>
-          <label className='size-2' htmlFor="text">Text:</label>
+        <div className='flex flex-col w-full'>
+          <label htmlFor="massage">Your Massage:</label>
           <textarea
-            id="text"
-            name="text"
-            value={text}
-            onChange={(e) => setText(e.target.value)}
+            className='outline outline-2 rounded-[0.5vw] p-[0.1vw] px-[0.5vw] text-[1.2vw] h-[7vw]'
+            id="massage"
+            name="massage"
+            value={massage}
+            onChange={(e) => setMassage(e.target.value)}
             required
           />
         </div>
-        <div>
-          <label htmlFor="html">HTML Content:</label>
-          <textarea
-            id="html"
-            name="html"
-            value={html}
-            onChange={(e) => setHtml(e.target.value)}
-          />
+        <div className='w-full flex justify-center mt-[1vw]'>
+          <button className=" bg-black w-[8vw] h-[3vw] text-[1.2vw] rounded-[0.5vw] font-bold text-white duration-700 hover:bg-[#999999]" type="submit">Send</button>
         </div>
-        <button className=' bg-lime-800 mt-10 ' type="submit">Send Email</button>
       </form>
       {responseMessage && <p>{responseMessage}</p>}
     </div>
