@@ -2,7 +2,9 @@
 import { useState } from 'react';
 
 function Page() {
-  const [to, setTo] = useState('');
+  const [name, setName] = useState('');
+  const [company_name, setCompany_name] = useState('');
+  const [email, setEmail] = useState('');
   const [subject, setSubject] = useState('');
   const [massage, setMassage] = useState('');
   const [responseMessage, setResponseMessage] = useState('');
@@ -12,7 +14,9 @@ function Page() {
 
     // ข้อมูลที่จะส่งไปยัง API
     const emailData = {
-      to,
+      name,
+      company_name,
+      email,
       subject,
       massage,
     };
@@ -48,11 +52,11 @@ function Page() {
           <label htmlFor="to">Your name</label>
           <input
             className='outline outline-2 rounded-[0.5vw] p-[0.1vw] px-[0.5vw] text-[1.2vw]'
-            type="email"
-            id="to"
-            name="to"
-            value={to}
-            onChange={(e) => setTo(e.target.value)}
+            type="text"
+            id="name"
+            name="name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
             required
           />
         </div>
@@ -60,11 +64,11 @@ function Page() {
           <label htmlFor="to">Company name</label>
           <input
             className='outline outline-2 rounded-[0.5vw] p-[0.1vw] px-[0.5vw] text-[1.2vw]'
-            type="email"
-            id="to"
-            name="to"
-            value={to}
-            onChange={(e) => setTo(e.target.value)}
+            type="text"
+            id="company_name"
+            name="company_name"
+            value={company_name}
+            onChange={(e) => setCompany_name(e.target.value)}
             required
           />
         </div>
@@ -73,10 +77,10 @@ function Page() {
           <input
             className='outline outline-2 rounded-[0.5vw] p-[0.1vw] px-[0.5vw] text-[1.2vw]'
             type="email"
-            id="to"
-            name="to"
-            value={to}
-            onChange={(e) => setTo(e.target.value)}
+            id="email"
+            name="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             required
           />
         </div>
