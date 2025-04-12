@@ -42,19 +42,15 @@ function checkRateLimit(ip) {
   ipRequests.set(ip, validRequests);
   return true;
 }
-
 export async function POST(req) {
   const headersList = await headers();
-  const ip = headersList.get('x-forwarded-for') || 'unknown';
-  
-  // Check rate limit
+  const ip = headersList.get('x-forwarded-for') || 'unknown'; 
   if (!checkRateLimit(ip)) {
     return NextResponse.json(
       { message: 'Too many requests. Please try again later.' },
       { status: 429 }
     );
   }
-
   const { name, company_name, email, subject, massage } = await req.json();
 
   // Validate required fields
