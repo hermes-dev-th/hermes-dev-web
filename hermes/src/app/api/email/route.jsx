@@ -1,8 +1,6 @@
 import nodemailer from 'nodemailer';
 import { NextResponse } from 'next/server';
 import { headers } from 'next/headers';
- main
-
 
 // Rate limiting configuration
 const RATE_LIMIT_WINDOW = 60 * 60 * 1000; // 1 hour in milliseconds
@@ -11,7 +9,6 @@ const ipRequests = new Map();
 
 // Spam protection configuration
 const SPAM_KEYWORDS = ['viagra', 'lottery', 'winner', 'prize', 'casino', 'bet', '$$$'];
-const MIN_MESSAGE_LENGTH = 10;
 const MAX_MESSAGE_LENGTH = 1000;
 
 function isSpam(content) {
@@ -22,7 +19,7 @@ function isSpam(content) {
   }
 
   // Check message length
-  if (content.length < MIN_MESSAGE_LENGTH || content.length > MAX_MESSAGE_LENGTH) {
+  if (content.length > MAX_MESSAGE_LENGTH) {
     return true;
   }
 
@@ -45,51 +42,7 @@ function checkRateLimit(ip) {
   return true;
 }
 
-
-// Rate limiting configuration
-const RATE_LIMIT_WINDOW = 60 * 60 * 1000; // 1 hour in milliseconds
-const MAX_REQUESTS_PER_WINDOW = 5; // Maximum 5 requests per hour
-const ipRequests = new Map();
-
-// Spam protection configuration
-const SPAM_KEYWORDS = ['viagra', 'lottery', 'winner', 'prize', 'casino', 'bet', '$$$'];
-const MIN_MESSAGE_LENGTH = 10;
-const MAX_MESSAGE_LENGTH = 1000;
-
-function isSpam(content) {
-  // Check for spam keywords
-  const lowerContent = content.toLowerCase();
-  if (SPAM_KEYWORDS.some(keyword => lowerContent.includes(keyword))) {
-    return true;
-  }
-
-  // Check message length
-  if (content.length < MIN_MESSAGE_LENGTH || content.length > MAX_MESSAGE_LENGTH) {
-    return true;
-  }
-
-  return false;
-}
-
-function checkRateLimit(ip) {
-  const now = Date.now();
-  const userRequests = ipRequests.get(ip) || [];
-  
-  // Remove old requests outside the window
-  const validRequests = userRequests.filter(time => now - time < RATE_LIMIT_WINDOW);
-  
-  if (validRequests.length >= MAX_REQUESTS_PER_WINDOW) {
-    return false;
-  }
-  
-  validRequests.push(now);
-  ipRequests.set(ip, validRequests);
-  return true;
-}
 export async function POST(req) {
-
-  const headersList = await headers();
-  const ip = headersList.get('x-forwarded-for') || 'unknown'; 
   const headersList = headers();
   const ip = headersList.get('x-forwarded-for') || 'unknown';
   
@@ -100,7 +53,7 @@ export async function POST(req) {
       { status: 429 }
     );
   }
-  
+
   const { name, company_name, email, subject, massage } = await req.json();
 
   // Validate required fields
@@ -114,11 +67,7 @@ export async function POST(req) {
   // Spam protection
   if (isSpam(massage)) {
     return NextResponse.json(
-
-      { message: 'ข้อความดูเหมือนจะเป็นสแปม กรุณาลองใหม่อีกครั้ง' },
-
       { message: 'Message appears to be spam.' },
-
       { status: 400 }
     );
   }
