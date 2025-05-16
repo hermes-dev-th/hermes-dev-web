@@ -1,0 +1,50 @@
+{
+  "nav": {
+    "home": "Home",
+    "services": "Services",
+    "pricing": "Pricing",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Transform Your Digital Presence",
+    "subtitle": "Professional web development solutions for businesses of all sizes",
+    "cta": "Get Started"
+  },
+  "services": {
+    "title": "Our Services",
+    "webDev": "Web Development",
+    "mobileDev": "Mobile Development",
+    "uiUx": "UI/UX Design",
+    "seo": "SEO Optimization"
+  },
+  "pricing": {
+    "title": "Pricing Plans",
+    "basic": "Basic",
+    "pro": "Professional",
+    "enterprise": "Enterprise",
+    "monthly": "Monthly",
+    "yearly": "Yearly",
+    "perMonth": "per month",
+    "perYear": "per year",
+    "getStarted": "Get Started"
+  },
+  "contact": {
+    "title": "Contact Us",
+    "name": "Name",
+    "email": "Email",
+    "message": "Message",
+    "submit": "Submit",
+    "success": "Message sent successfully!",
+    "error": "Error sending message. Please try again."
+  },
+  "footer": {
+    "rights": "All rights reserved",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service"
+  },
+  "language": {
+    "select": "Select Language",
+    "en": "English",
+    "th": "Thai"
+  }
+} 
